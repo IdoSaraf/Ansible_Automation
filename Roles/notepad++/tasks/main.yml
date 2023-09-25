@@ -1,6 +1,6 @@
 
 - name: Coping npp.8.4.7.Installer.x64.exe
-  win_command: xcopy "\\data\Files\\npp.8.4.7.Installer.x64.exe" C:\Installations /E /H /I
+  win_command: xcopy "C:\Users\Auto\Downloads\npp.8.4.7.Installer.x64.exe" C:\Installations /E /H /I
   tags:
     - Notepad++
 
