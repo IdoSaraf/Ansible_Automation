@@ -1,0 +1,19 @@
+- name: Run Robocopy task
+  hosts: scanners
+  become: true
+  become_method: runas
+  become_user: svc.auto_user
+  tasks:
+
+    - name: Warn logged in users of impending upgrade
+      win_msg:
+        display_seconds: 12
+        msg: Copying Playbacks. Do Not Turn Off The Machine!!
+
+    - name: Enabling Robocopy Task
+      win_shell: schtasks /CHANGE /TN "Robocopy-Task_V2" /ENABLE
+      ignore_errors: yes
+
+    - name: Running Robocopy Task
+      win_command: 'schtasks /RUN /TN "Robocopy-Task_V2"'
+      ignore_errors: yes

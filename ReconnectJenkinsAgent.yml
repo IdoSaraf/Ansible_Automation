@@ -1,0 +1,22 @@
+---
+- name: Run Jenkins task
+  hosts: scanners
+  become: true
+  become_method: runas
+  become_user: svc.auto_user
+  tasks:
+
+    - name: Check if Jenkins Startup_V1 task exists
+      win_shell: |
+        if (Get-ScheduledTask -TaskName "Jenkins Startup_V1" -ErrorAction SilentlyContinue) {
+          Write-Output "Jenkins Startup_V1 task exists"
+        }
+      register: task_v1_exists
+      changed_when: false
+
+
+    - name: Reconnect Jenkins Agent
+      win_command: "{{ 'schtasks /RUN /TN \"Jenkins Startup_V1\" /I' if task_v1_exists.stdout else 'schtasks /RUN /TN \"Jenkins Startup_V2\" /I' }}"
+      ignore_errors: yes
+
+
