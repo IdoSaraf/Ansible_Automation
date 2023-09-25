@@ -1,0 +1,8 @@
+- name: Disable NVIDIA Display Container LS service #NVIDIA popup
+  win_service:
+    name: "NvDisplay.ContainerLocalSystem"
+    state: "stopped"
+    start_mode: "disabled"
+  ignore_errors: yes
+  tags:
+    - NVIDIA
