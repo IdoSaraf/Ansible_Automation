@@ -1,0 +1,34 @@
+
+  #this is good below
+
+#- name: Installing winPcap
+ # ansible.windows.win_package:
+ #   path: https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe
+  #  arguments:
+   #   - /passive
+   #   - /norestart
+ # tags:
+   # - WinPcap
+
+
+    #on top
+
+  - name: Download WinPcap installer
+    win_get_url:
+      url: "https://www.winpcap.org/install/bin/WinPcap_4_1_3.exe"
+      dest: "C:\\InstallationsForSkynet\\WinPcap_4_1_3.exe"
+    register: winpcap_download
+    tags:
+      - WinPcap
+
+  #- name: Install WinPcap
+#    win_package:
+  #    path: "{{ winpcap_download.dest }}"
+  #    arguments:
+  #      - /S
+   #     - /NCRC
+   #     - /Q
+    #    - /verysilent
+    #    - /norestart
+  #  tags:
+  #    - WinPcap
