@@ -1,19 +1,19 @@
 
 - name: Copying Java
-  win_command: xcopy "\\data\Automation\Files\Skynet setup\jdk-11.0.15.1_windows-x64_bin.exe" C:\InstallationsForSkynet
+  win_command: xcopy "C:\Users\Auto\Downloads\jdk-11.0.15.1_windows-x64_bin.exe" C:\InstallationsForSkynet
   tags:
     - java
 
 - name: Installing Java
   ansible.windows.win_package:
-    path: 'C:\\InstallationsForSkynet\\jdk-11.0.15.1_windows-x64_bin.exe'
+    path: 'C:\\Installations\\jdk-11.0.15.1_windows-x64_bin.exe'
     state: present
   tags:
     - java
 
 - name: Removing The exe File
   ansible.windows.win_file:
-    path: 'C:\\InstallationsForSkynet\\jdk-11.0.15.1_windows-x64_bin.exe'
+    path: 'C:\\Installations\\jdk-11.0.15.1_windows-x64_bin.exe'
     state: absent
     tags:
       - java
