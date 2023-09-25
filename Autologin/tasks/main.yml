@@ -2,7 +2,7 @@
 - name: Warn logged in users of impending upgrade
   win_msg:
     display_seconds: 12
-    msg: Importing Shell Registry.
+    msg: Importing Auto login reg file to Registry.
     tags:
       - Autologin
 
