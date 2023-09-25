@@ -10,7 +10,7 @@
   ansible.builtin.win_file:
     state: directory
     recurse: true
-    path: C:\InstallationsForSkynet
+    path: C:\Installations
     tags:
       - common
 
@@ -22,14 +22,14 @@
     - common
 
 - name: Copying autologin_svc_auto.reg
-  win_command: xcopy "\\data\Users\automation\scripts\autologin_svc_auto.reg" C:\temp
+  win_command: xcopy "C:\Users\Auto\Downloads\auto.reg" C:\temp
   when: not autologin.stat.exists
   tags:
     - common
 
 - name: Importing autologin_svc_auto registry file
   ansible.windows.win_command:
-    cmd: reg import "C:\temp\autologin_svc_auto.reg"
+    cmd: reg import "C:\temp\auto.reg"
   tags:
     - common
 
@@ -41,7 +41,7 @@
     - common
 
 - name: Copying shell.reg
-  win_command: xcopy "\\data\Automation\FARM\Files\shell.reg" "C:\temp /E /H /I
+  win_command: xcopy "C:\Users\Auto\Downloads\shell.reg" "C:\temp /E /H /I
   when: not shell.stat.exists
   tags:
     - common
@@ -54,13 +54,13 @@
 
 - name: Checking if .ssh folder exists
   win_stat:
-    path: 'C:\Users\svc.auto_user\.ssh'
+    path: 'C:\Users\auto\.ssh'
   register: ssh_folder
   tags:
     - common
 
 - name: Copy .ssh folder
-  win_command: xcopy "\\data\Automation\FARM\Files\Skynet setup\.ssh" "C:\Users\svc.auto_user\.ssh" /E /H /I
+  win_command: xcopy "C:\Users\Auto\Downloads\.ssh" "C:\Users\auto\.ssh" /E /H /I
   when: not ssh_folder.stat.exists
   tags:
     - common
@@ -73,13 +73,13 @@
     - common
 
 - name: Copying Robocopy
-  win_command: xcopy "\\data\Users\Ido Saraf\robocopy-automation.rcj" C:\
+  win_command: xcopy "\C:\Users\Auto\Downloads\robocopy-automation.rcj" C:\
   when: not robocopy.stat.exists
   tags:
     - common
 
 - name: Copying Rules.reg for FireWall
-  win_command: xcopy "\\data\Users\Ido Saraf\rules.reg" C:\temp
+  win_command: xcopy "C:\Users\Auto\Downloads\rules.reg" C:\temp
   ignore_errors: yes
   tags:
     - common
