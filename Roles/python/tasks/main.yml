@@ -20,8 +20,8 @@
   - name: Add Python 3.10 to system path
     win_path:
       elements:
-        - C:\Users\svc.auto_user\AppData\Local\Programs\Python\Python310\Scripts\
-        - C:\Users\svc.auto_user\AppData\Local\Programs\Python\Python310\
+        - C:\Users\auto\AppData\Local\Programs\Python\Python310\Scripts\
+        - C:\Users\auto\AppData\Local\Programs\Python\Python310\
       state: present
       scope: user
     tags:
@@ -32,7 +32,7 @@
   become: true
   ignore_errors: yes
   vars:
-    ansible_python_interpreter: "C:/Users/svc.auto_user/AppData/Local/Programs/Python/Python310/python.exe"
+    ansible_python_interpreter: "C:/Users/auto/AppData/Local/Programs/Python/Python310/python.exe"
   tags:
    - python
 
