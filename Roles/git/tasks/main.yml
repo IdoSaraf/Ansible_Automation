@@ -1,0 +1,59 @@
+#this is working
+- name: Create GitRep folder
+  ansible.builtin.win_file:
+     state: directory
+     recurse: true
+     path: C:\GitRep
+     tags:
+       - git
+
+#- name: Installing Chocolatey
+#  raw: |
+#    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+#  become: true
+#  ignore_errors: yes
+#  tags:
+#    - git
+
+- name: Installing git
+  win_chocolatey:
+    name: git
+    state: present
+#this is working
+#- name: Cloning Git repository Skynet
+#  win_shell: git clone ssh://git@src.aligntech.com/sna/skynet.git C:\\GitRep\\skynet
+#  become: yes
+#  tags:
+#     - git
+
+#- name: Running poetry install on Skynet
+#  win_command: poetry install
+#  args:
+#    chdir: C:\GitRep\skynet
+#  ignore_errors: yes
+#  tags:
+#    - git
+
+#- name: Cloning Git repository Aurora
+#  win_shell: git clone ssh://git@src.aligntech.com/sna/aurora.git C:\\GitRep\\aurora
+#  become: yes
+#  tags:
+#    - git
+
+#- name: Running poetry install on Aurora
+#  win_command: poetry install
+#  args:
+#    chdir: C:\GitRep\aurora
+#  ignore_errors: yes
+#  tags:
+#    - git
+
+
+#- name: Setting WORK_DIR environment variable for Git
+#  win_environment:
+#    name: WORK_DIR
+#    value: "C:\\GitRep"
+#    state: present
+#    level: user
+#  tags:
+#    - git
