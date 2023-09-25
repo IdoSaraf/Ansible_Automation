@@ -1,0 +1,49 @@
+
+- name: Install Chocolatey
+  ansible.windows.win_shell: "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+  become: true
+  tags:
+    - python
+
+
+- name: Installing Python 3.10
+  win_chocolatey:
+    name: python
+    version: 3.10.8
+    state: present
+    params:
+      AddToPath: "true"
+      tags:
+        - python
+
+- block:
+  - name: Add Python 3.10 to system path
+    win_path:
+      elements:
+        - C:\Users\svc.auto_user\AppData\Local\Programs\Python\Python310\Scripts\
+        - C:\Users\svc.auto_user\AppData\Local\Programs\Python\Python310\
+      state: present
+      scope: user
+    tags:
+      - python
+
+- name: install poetry
+  win_command: "C:\\Python310\\Scripts\\pip.exe install poetry"
+  become: true
+  ignore_errors: yes
+  vars:
+    ansible_python_interpreter: "C:/Users/svc.auto_user/AppData/Local/Programs/Python/Python310/python.exe"
+  tags:
+   - python
+
+- name: Install Playwright
+  win_command: pip install playwright
+  ignore_errors: yes
+  tags:
+    - python
+
+- name: Install Playwright
+  win_command: playwright install
+  ignore_errors: yes
+  tags:
+    - python
