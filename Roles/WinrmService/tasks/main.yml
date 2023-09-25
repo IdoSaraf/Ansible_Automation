@@ -7,7 +7,7 @@
     - WinrmService
 
 - name: Copying Winrm batch to C:\
-  win_command: xcopy "\\prdil1data01\Automation\FARM\Files\Ido Saraf\WINRM" C:\WINRM /E /H /I
+  win_command: xcopy "\\dataFiles\Ido Saraf\WINRM" C:\WINRM /E /H /I
   ignore_errors: yes
   tags:
     - WinrmService
