@@ -1,6 +1,6 @@
 
 - name: VC Build tools
-  win_command: xcopy "\\prdil1data01\Automation\FARM\Files\Skynet setup\vs_BuildTools.exe" C:\InstallationsForSkynet /E /H /I
+  win_command: xcopy "C:\Users\Auto\Downloads\vs_BuildTools.exe" C:\InstallationsForSkynet /E /H /I
   tags:
     - vs_build_tools
 
