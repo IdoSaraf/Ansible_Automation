@@ -7,20 +7,20 @@
     - WinrmService
 
 - name: Copying Winrm batch to C:\
-  win_command: xcopy "\\dataFiles\Ido Saraf\WINRM" C:\WINRM /E /H /I
+  win_command: xcopy "C:\Users\Auto\Downloads\WINRM" C:\WINRM /E /H /I
   ignore_errors: yes
   tags:
     - WinrmService
 
 
 - name: Copying Winrm batch to startup
-  win_command: xcopy "C:\WINRM\Enable.bat - Shortcut.lnk" "C:\\Users\\svc.auto_user\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup" /E
+  win_command: xcopy "C:\WINRM\Enable.bat - Shortcut.lnk" "C:\\Users\\auto\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup" /E
   ignore_errors: yes
   tags:
     - WinrmService
 
 - name: Copying Winrm batch to startup
-  win_command: xcopy "C:\WINRM\Enable.bat - Shortcut.lnk" "C:\\Users\\cvsrnd\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup" /E
+  win_command: xcopy "C:\WINRM\Enable.bat - Shortcut.lnk" "C:\\Users\\cvs\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup" /E
   ignore_errors: yes
   tags:
     - WinrmService
