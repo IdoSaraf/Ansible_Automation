@@ -1,12 +1,12 @@
 
 - name: VC Build tools
-  win_command: xcopy "\\prdil1data01\Automation\FARM\Files\Skynet setup\vs_BuildTools.exe" C:\InstallationsForSkynet /E /H /I
+  win_command: xcopy "\\dataFiles\Files\vs_BuildTools.exe" C:\Installations/E /H /I
   tags:
     - vs_build_tools
 
 - name: Install VC Build tools
   ansible.windows.win_package:
-    path: "C:\\InstallationsForSkynet\\vs_BuildTools.exe"
+    path: "C:\\Installations\\vs_BuildTools.exe"
     arguments: "--quiet --wait --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools "
     state: present
   become: true
