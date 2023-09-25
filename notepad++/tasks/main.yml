@@ -1,0 +1,21 @@
+
+- name: Coping npp.8.4.7.Installer.x64.exe
+  win_command: xcopy "\\prdil1data01\Automation\FARM\Files\Skynet setup\npp.8.4.7.Installer.x64.exe" C:\InstallationsForSkynet /E /H /I
+  tags:
+    - Notepad++
+
+- name: Installing Notpad++
+  ansible.windows.win_package:
+    path: 'C:\\InstallationsForSkynet\\npp.8.4.7.Installer.x64.exe'
+    arguments: "/quiet /S"
+    state: present
+  tags:
+    - Notepad++
+
+- name: Removing The exe File
+  ansible.windows.win_file:
+    path: 'C:\\InstallationsForSkynet\\npp.8.4.7.Installer.x64.exe'
+    state: absent
+    tags:
+      - Notepad++
+
