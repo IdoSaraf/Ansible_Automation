@@ -12,7 +12,7 @@
   register: autologin
   tags:
     - Autologin
-"C:\Users\isaraf\Downloads
+
 - name: Copying autologin_svc_auto.reg
   win_command: xcopy "C:\Users\Auto\Downloads\shell.reg" C:\temp
   when: not autologin.stat.exists
