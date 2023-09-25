@@ -1,8 +1,0 @@
-
-- name: Install nodejs
-  win_chocolatey:
-    name: nodejs
-    version: '20.0.0'
-    state: present
-  tags:
-    - NodeJS
