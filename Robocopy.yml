@@ -2,7 +2,7 @@
   hosts: scanners
   become: true
   become_method: runas
-  become_user: svc.auto_user
+  become_user: user
   tasks:
 
     - name: Warn logged in users of impending upgrade
