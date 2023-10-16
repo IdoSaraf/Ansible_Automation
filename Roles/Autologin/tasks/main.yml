@@ -6,20 +6,20 @@
     tags:
       - Autologin
 
-- name: Checking if autologin_svc_auto.reg exists
+- name: Checking if autologin.reg exists
   win_stat:
     path: 'C:\temp\shell.reg'
   register: autologin
   tags:
     - Autologin
 
-- name: Copying autologin_svc_auto.reg
+- name: Copying autologin.reg
   win_command: xcopy "C:\Users\Auto\Downloads\shell.reg" C:\temp
   when: not autologin.stat.exists
   tags:
     - Autologin
 
-- name: Importing autologin_svc_auto registry file
+- name: Importing autologin registry file
   ansible.windows.win_command:
     cmd: reg import "C:\temp\shell.reg"
   tags:
