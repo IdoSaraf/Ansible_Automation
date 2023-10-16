@@ -3,7 +3,7 @@
   hosts: scanners
   become: true
   become_method: runas
-  become_user: svc.auto_user
+  become_user: user
   tasks:
 
     - name: Check if Jenkins Startup_V1 task exists
