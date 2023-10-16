@@ -3,7 +3,7 @@
   gather_facts: true
   become: true
   become_method: runas
-  become_user: svc.auto_user
+  become_user: user
   vars:
     ansible_connection: winrm
     ansible_winrm_transport: ntlm
